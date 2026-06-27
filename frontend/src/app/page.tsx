@@ -5,61 +5,78 @@ export default function Home() {
   const highlights = getHighlights();
 
   return (
-    <main className="min-h-screen bg-blue-50 px-6 py-10 text-slate-900">
-      {/* 자기소개 전체 화면: 학생들이 이름, 소속, 설명을 바꿔보는 첫 실습 영역 */}
-      <section className="mx-auto max-w-4xl rounded-lg bg-white p-8 shadow-sm">
-        <div className="grid gap-8 md:grid-cols-[280px_1fr] md:items-center">
-          {/* 프로필 사진 영역: public/images/ohtani.jpeg 파일을 화면에 보여줌 */}
-          <img
-            src={profile.image_path}
-            alt={`${profile.name} 프로필 사진`}
-            className="h-72 w-full rounded-lg object-cover shadow-sm"
-          />
+    <main className="min-h-screen bg-[#f3f5f3] px-6 py-16 text-[#353d36] font-sans antialiased selection:bg-[#cbd5cb]">
+      {/* 매거진 감성 섹션 */}
+      <section className="mx-auto max-w-3xl rounded-[2.5rem] bg-[#fcfcfa] p-10 md:p-14 border border-[#e3e6e3] shadow-sm relative overflow-hidden">
+        
+        {/* 상단 미니 매거진 헤더 데코 */}
+        <div className="flex justify-between items-center border-b border-[#e9ebe9] pb-6 mb-10 text-xs tracking-[0.2em] font-semibold text-[#8b948c] uppercase">
+          <span>Personal Journal</span>
+          <span>Issue No. 01</span>
+        </div>
+
+        <div className="grid gap-12 md:grid-cols-[280px_1fr] md:items-center">
+          {/* 비대칭 곡선 및 미색 액자 선이 적용된 프로필 사진 */}
+          <div className="p-3 bg-[#faf9f6] border border-[#e9e8e3] rounded-[2.5rem_1.5rem_3.5rem_2rem] shadow-sm">
+            <img
+              src={profile.image_path}
+              alt={`${profile.name} 프로필 사진`}
+              className="h-72 w-full rounded-[2.2rem_1.2rem_3.2rem_1.7rem] object-cover filter contrast-[1.02]"
+            />
+          </div>
 
           <div>
-            <p className="text-sm font-bold text-blue-600">Baseball Player Profile</p>
-            <h1 className="mt-3 text-4xl font-black text-slate-950 sm:text-5xl">{profile.name}</h1>
-            <p className="mt-4 text-lg leading-8 text-slate-700">{profile.tagline}</p>
+            <div className="inline-block px-3 py-1 bg-[#e4ebe4] text-[#435745] text-xs font-bold tracking-widest uppercase rounded-full">
+              내 프로필
+            </div>
+            <h1 className="mt-6 font-serif text-5xl font-light text-[#222923] tracking-tight leading-tight">
+              {profile.name}
+            </h1>
+            <p className="mt-6 font-serif italic text-lg leading-relaxed text-[#555d56] border-l-2 border-[#c2ccc2] pl-4">
+              "{profile.tagline}"
+            </p>
           </div>
         </div>
 
-        {/* 기본 정보 카드: 바이브 코딩으로 가장 바꾸기 쉬운 데이터 영역 */}
-        <div className="mt-8 grid gap-4 sm:grid-cols-2">
-          <div className="rounded-lg border border-slate-200 bg-blue-50 p-5">
-            <p className="text-sm font-bold text-slate-500">이름</p>
-            <p className="mt-2 text-xl font-black text-slate-950">{profile.name}</p>
+        {/* 기본 정보: 핀터레스트/매거진 감성의 보더리스 라인 형태 */}
+        <div className="mt-16 grid gap-6 sm:grid-cols-3 border-t border-b border-[#e9ebe9] py-8">
+          <div className="flex flex-col">
+            <span className="text-xs font-bold tracking-wider text-[#8b948c] uppercase">이름</span>
+            <span className="mt-2 font-serif text-xl font-normal text-[#222923]">{profile.name}</span>
           </div>
-          <div className="rounded-lg border border-slate-200 bg-blue-50 p-5">
-            <p className="text-sm font-bold text-slate-500">소속</p>
-            <p className="mt-2 text-xl font-black text-slate-950">{profile.team}</p>
+          <div className="flex flex-col">
+            <span className="text-xs font-bold tracking-wider text-[#8b948c] uppercase">소속</span>
+            <span className="mt-2 font-serif text-xl font-normal text-[#222923]">{profile.team}</span>
           </div>
-          <div className="rounded-lg border border-slate-200 bg-blue-50 p-5">
-            <p className="text-sm font-bold text-slate-500">포지션</p>
-            <p className="mt-2 text-xl font-black text-slate-950">{profile.position}</p>
-          </div>
-          <div className="rounded-lg border border-slate-200 bg-blue-50 p-5">
-            <p className="text-sm font-bold text-slate-500">등번호</p>
-            <p className="mt-2 text-xl font-black text-slate-950">{profile.uniform_number}</p>
+          <div className="flex flex-col">
+            <span className="text-xs font-bold tracking-wider text-[#8b948c] uppercase">분야 / 포지션</span>
+            <span className="mt-2 font-serif text-xl font-normal text-[#222923]">{profile.position}</span>
           </div>
         </div>
 
-        {/* 소개 문장 영역: 학생들이 문구와 스타일을 바꾸는 연습용 섹션 */}
-        <div className="mt-8 rounded-lg border border-slate-200 p-6">
-          <h2 className="text-2xl font-black text-slate-950">자기소개</h2>
-          <p className="mt-4 leading-8 text-slate-700">{profile.introduction}</p>
+        {/* 자기소개 본문 */}
+        <div className="mt-14">
+          <h2 className="font-serif text-2xl font-light text-[#222923] tracking-tight border-b border-[#e9ebe9] pb-3">Story</h2>
+          <p className="mt-6 text-[0.98rem] leading-9 text-[#4e574f] font-light whitespace-pre-line">
+            {profile.introduction}
+          </p>
         </div>
 
-        {/* 좋아하는 것 목록: 항목 추가/삭제 실습에 쓰기 좋은 영역 */}
-        <div className="mt-8">
-          <h2 className="text-2xl font-black text-slate-950">특징</h2>
-          <div className="mt-4 grid gap-3 sm:grid-cols-3">
+        {/* 특징 배지 목록 */}
+        <div className="mt-14 border-t border-[#e9ebe9] pt-10">
+          <h2 className="font-serif text-2xl font-light text-[#222923] tracking-tight">Highlights</h2>
+          <div className="mt-6 flex flex-wrap gap-3">
             {highlights.map((highlight) => (
-              <div key={highlight.id} className="rounded-lg bg-slate-100 px-4 py-3 text-center font-bold text-slate-700">
-                {highlight.label}
-              </div>
+              <span
+                key={highlight.id}
+                className="px-5 py-2.5 bg-[#eaf0ea] hover:bg-[#dee7de] text-[#344636] text-xs font-medium tracking-wider rounded-full border border-[#d6dfd6] shadow-sm transition-all duration-300 transform hover:-translate-y-0.5 cursor-default"
+              >
+                # {highlight.label}
+              </span>
             ))}
           </div>
         </div>
+
       </section>
     </main>
   );
